@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+<h1>Profile</h1>
+{% block head %}
+    <title> Welcome to your profile section </title>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <form class="container">
+            {{ form.as_p }}
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
