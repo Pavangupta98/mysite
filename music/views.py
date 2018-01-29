@@ -8,6 +8,7 @@ from django.views import generic
 from django.contrib.auth.forms import UserChangeForm
 from music.forms import Registration_form
 from django.contrib.auth.models import User
+from twilio.rest import Client
 
 
 def home(request):
@@ -45,6 +46,17 @@ def register(request):
             to_list = [saveit.email, 'pavangupta1997ng@gmail.com']
            
             send_mail(subject=subject, message=message, from_email=from_email,recipient_list=to_list, fail_silently=False)
+            account_sid = "AC46989a2efd005d718d4b8e0bfb12ce62"
+            auth_token = "3be9277bedae40879626bc0f60371303"
+
+            client = Client(account_sid, auth_token)
+
+            client.messages.create(
+                to="+917999736575",
+                from_="+918989445058",
+                body="This is the ship that made the Kessel Run in fourteen parsecs?"
+            )
+
             return render(request, 'music/home.html')
     else:
         form = Registration_form
